@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/battleship")
-public class HomeServlet extends HttpServlet {
+@WebServlet(name = "GameServlet", urlPatterns = "/game")
+public class GameServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/index.html").forward(request, response);
+        super.doGet(request, response);
     }
 }
