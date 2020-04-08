@@ -21,4 +21,8 @@ public class Field {
     public boolean isValid() {
         return cells.values().stream().filter(cell -> cell == CellState.SHIP).count() == 20;
     }
+
+    public boolean hasShips() {
+        return cells.values().stream().anyMatch(cell -> cell == CellState.SHIP);
+    }
 }

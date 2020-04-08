@@ -15,7 +15,6 @@ import java.io.IOException;
 public class SetupServlet extends HttpServlet {
     private static final String SHIP_SETUP_PAGE = "/WEB-INF/setupShips.jsp";
     private static final String REGISTER_PAGE = "/WEB-INF/register.jsp";
-    private static final String WAIT_OPPONENT_PAGE = "/WEB-INF/waitOpponentLogin.jsp";
     private static final String WAIT_SETUP_PAGE = "/WEB-INF/waitSetup.jsp";
 
     @Override
@@ -28,14 +27,12 @@ public class SetupServlet extends HttpServlet {
             return;
         }
 
-        if (game.setupIsReady()) {
-            response.sendRedirect("/game");
-        } else if (player.isReadyToPlay()) {
-            request.getRequestDispatcher(WAIT_SETUP_PAGE).include(request, response);
-        } else if (game.isReady()) {
+        if (!player.getAllyField().isValid()) {
             request.getRequestDispatcher(SHIP_SETUP_PAGE).include(request, response);
+        } else if (game.setupIsReady()) {
+            response.sendRedirect("/game");
         } else {
-            request.getRequestDispatcher(WAIT_OPPONENT_PAGE).include(request, response);
+            request.getRequestDispatcher(WAIT_SETUP_PAGE).include(request, response);
         }
     }
 
@@ -52,7 +49,7 @@ public class SetupServlet extends HttpServlet {
         }
 
         if (player.getAllyField().isValid()) {
-            request.getRequestDispatcher(WAIT_SETUP_PAGE).include(request, response);
+            doGet(request, response);
         } else {
             request.setAttribute("message", "Wrong placement!");
             request.getRequestDispatcher(SHIP_SETUP_PAGE).include(request, response);

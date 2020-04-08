@@ -5,25 +5,25 @@
 <html>
 <head>
     <title>BattleShip - setup your ships</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 <div class="w3-container w3-display-middle">
     <form action="/setup" method="post">
-        <table class="w3-table w3-border">
+        <table class="w3-table">
             <tr>
                 <td></td>
                 <c:forEach items="A,B,C,D,E,F,G,H,I,J" var="col">
-                    <th class="w3-center">${col}</th>
+                    <th class="w3-center open-sans-font">${col}</th>
                 </c:forEach>
             </tr>
             <c:forEach begin="1" end="10" var="row">
                 <tr>
-                    <th>${row}</th>
+                    <th class="open-sans-font">${row}</th>
                     <c:forEach items="A,B,C,D,E,F,G,H,I,J" var="col">
                         <td>
                             <c:set var="addr" value="${col}${row}"/>
-                            <c:set var="checked" value="${sessionScope}"/>
                             <input class="w3-check" type="checkbox" name="cells" value="${addr}" style="top: 0" <c:if
                                     test="${sessionScope.player.allyField.getState(addr) == 'SHIP'}">checked</c:if>>
                         </td>

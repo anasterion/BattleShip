@@ -1,0 +1,39 @@
+.open-sans-font {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.log-box {
+    display: block;
+    border: 1px solid darkgrey;
+    background-color: lightgrey;
+    padding: 5px;
+    margin-top: 20px;
+    width: 100%;
+    height: 150px;
+    overflow: auto;
+}
+
+th, td {
+    border: 1px solid darkgrey;
+}
+
+th {
+    vertical-align: middle !important;
+}
+
+td {
+    width: 40px;
+    height: 40px;
+}
+
+td.SHIP {
+    background-color: black;
+}
+
+td.HIT {
+    background-color: red;
+}
+
+td.MISS {
+    background-color: aqua;
+}
