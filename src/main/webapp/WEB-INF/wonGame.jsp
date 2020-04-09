@@ -9,7 +9,7 @@
 <body>
 <div class="w3-container w3-display-middle">
     <h1 class="open-sans-font w3-center">Game Over!</h1>
-    <h1 class="open-sans-font w3-center">${requestScope.message}</h1>
+    <h1 class="open-sans-font w3-center">You Won!</h1>
     <form action="/battleship" method="post">
         <input type="hidden" name="name" value="${sessionScope.player.name}">
         <div class="w3-padding w3-center">
